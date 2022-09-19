@@ -7,7 +7,7 @@ import {registerValidation , loginValidation, postCreateValidation} from "./vali
 import {handelValidationErrors,checkAuth} from "./utils/index.js"
 
 
-mongoose.connect("mongodb+srv://admin:admin@cluster0.jlgexeq.mongodb.net/twitter?retryWrites=true&w=majority").then(()=>console.log("DB.ok")).catch((err)=>console.log(err))
+mongoose.connect(process.env.MONGODB_URI).then(()=>console.log("DB.ok")).catch((err)=>console.log(err))
 
 const app =express()
 app.use("/uploads",express.static("uploads"))
@@ -40,7 +40,7 @@ app.post("/posts",checkAuth,postCreateValidation,handelValidationErrors,postCont
 app.patch("/posts/:id",checkAuth,postCreateValidation,handelValidationErrors,postController.update)
 app.delete("/posts/:id",checkAuth,postController.remove)
 
-app.listen(4444,(err)=>{
+app.listen(process.env.PORT || 4444,(err)=>{
     if(err){
         console.log(err)
     }
