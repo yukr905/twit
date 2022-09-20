@@ -6,7 +6,7 @@ import  {postController,UserController} from "./controllers/index.js"
 import {registerValidation , loginValidation, postCreateValidation} from "./validations/validations.js"
 import {handelValidationErrors,checkAuth} from "./utils/index.js"
 
-
+"mongodb+srv://admin:admin@cluster0.jlgexeq.mongodb.net/twitter?retryWrites=true&w=majority"
 mongoose.connect(process.env.MONGODB_URI).then(()=>console.log("DB.ok")).catch((err)=>console.log(err))
 
 const app =express()
